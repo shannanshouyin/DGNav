@@ -1,0 +1,112 @@
+BASE_TASK_CONFIG_PATH: run_rxr/rxr_vlnce.yaml
+SIMULATOR_GPU_IDS: [0]
+TORCH_GPU_ID: 0
+TORCH_GPU_IDS: [0]
+TRAINER_NAME: SS-ETP
+GPU_NUMBERS: 1
+NUM_ENVIRONMENTS: 1
+TENSORBOARD_DIR: data/logs/tensorboard_dirs/
+CHECKPOINT_FOLDER: data/logs/checkpoints/
+EVAL_CKPT_PATH_DIR: data/logs/checkpoints/
+RESULTS_DIR: data/logs/eval_results/
+VIDEO_OPTION: [] # Default: no video saving, can be set to ["disk"] or ["tensorboard"]
+VIDEO_DIR: data/logs/video/
+
+INFERENCE:
+  SPLIT: test_challenge
+  LANGUAGES: ['*']
+  USE_CKPT_CONFIG: False
+  CKPT_PATH: ''  # REPLACE THIS
+  PREDICTIONS_FILE: ''
+  FORMAT: rxr
+  EPISODE_COUNT: -1
+
+EVAL:
+  USE_CKPT_CONFIG: False
+  SPLIT: val_unseen
+  # LANGUAGES: [en-US, en-IN]
+  LANGUAGES: ['*']
+  EPISODE_COUNT: -1
+  CKPT_PATH_DIR: ''
+  fast_eval: False
+
+
+IL:
+  iters: 15000
+  log_every: 200
+  lr: 1e-5
+  batch_size: 1 # equal to NUM_ENVIRONMENTS
+  ml_weight: 1.0
+  expert_policy: ndtw
+
+  sample_ratio: 0.75
+  decay_interval: 3000
+  
+  max_traj_len: 25
+  max_text_len: 200
+
+  #——————————————————————————————————————————————————————
+  loc_noise: 0.50  # Fixed loc_noise value (used when both dynamic and random are disabled)
+  # loc_noise configuration (fixed, dynamic, random are parallel, priority: dynamic > random > fixed)
+  # Dynamic loc_noise configuration
+  use_dynamic_loc_noise: False  # Whether to enable dynamic loc_noise (based on candidate waypoint angle divergence)
+  dynamic_loc_noise_min: 0.25  # Minimum value for dynamic loc_noise
+  dynamic_loc_noise_max: 0.50  # Maximum value for dynamic loc_noise
+  dynamic_loc_noise_alpha: 0.86  # Dynamic loc_noise formula coefficient alpha: loc_noise = clip(alpha - beta * std, min, max)
+  dynamic_loc_noise_beta: 0.23  # Dynamic loc_noise formula coefficient beta: loc_noise = clip(alpha - beta * std, min, max)
+  # Random loc_noise configuration
+  use_random_loc_noise: False  # Whether to enable random loc_noise (random sampling within specified range)
+  random_loc_noise_min: 0.25  # Minimum value for random loc_noise
+  random_loc_noise_max: 0.50  # Maximum value for random loc_noise
+  #——————————————————————————————————————————————————————
+  
+  waypoint_aug: False
+  ghost_aug: 0.0
+  back_algo: teleport
+  # back_algo: control
+  tryout: True
+
+MODEL:
+  task_type: rxr
+
+  policy_name: PolicyViewSelectionETP
+  NUM_ANGLES: 12
+  pretrained_path: pretrained/ETP/mlm.sap_rxr/ckpts/model_step_90000.pt
+  fix_lang_embedding: False
+  fix_pano_embedding: False
+  use_depth_embedding: True
+  use_sprels: True
+  merge_ghost: True
+  consume_ghost: True
+  
+  #——————————————————————————————————————————————————————
+  # Dynamic graph configuration
+  use_dynamic_graph: True  # Set to True to enable dynamic graph method, False to keep original ETPNav
+  dynamic_graph_lr: 1e-4  # Learning rate for dynamic graph related parameters (recommend using smaller learning rate as training from scratch)
+  
+  # Geometric Dropout configuration - Strategy 1
+  use_geo_dropout: False  # Whether to enable geometric dropout (only effective when use_dynamic_graph=True)
+  geo_dropout_prob: 0.3  # Probability of geometric dropout (recommended range: 0.2-0.3, for ablation studies)
+  
+  # Ablation study configuration: control whether to use Esem and Einst in dynamic graph
+  use_esem: True  # Whether to enable semantic edge Esem (only effective when use_dynamic_graph=True)
+  use_einst: True  # Whether to enable instruction edge Einst (only effective when use_dynamic_graph=True)
+  #——————————————————————————————————————————————————————
+  # Node Gating configuration
+  use_node_gating: False  # Whether to enable node gating mechanism (gate node features after Cross-Attn and before Self-Attn)
+  node_gating_lr: 1e-4  # Learning rate for node gating related parameters (recommend using smaller learning rate as training from scratch)
+  #——————————————————————————————————————————————————————
+  
+  spatial_output: False
+  RGB_ENCODER:
+    output_size: 512
+  DEPTH_ENCODER:
+    output_size: 256    
+  VISUAL_DIM:
+    vis_hidden: 768
+    directional: 128
+  INSTRUCTION_ENCODER:
+    bidirectional: True
+    sensor_uuid: rxr_instruction
+    embedding_size: 768
+

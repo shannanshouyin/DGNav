@@ -1,0 +1,14 @@
+importlib-metadata==4.8.3
+dtw==1.4.0
+fastdtw==0.3.4
+networkx==2.5.1
+jsonlines==3.0.0
+msgpack-numpy==0.4.7.1
+tensorflow==1.13.1
+boto3==1.20.31
+pytorch-transformers==1.2.0
+transformers==4.12.5
+
+# pip install -i https://pypi.tuna.tsinghua.edu.cn/simple git+https://github.com/openai/CLIP.git
+# pip uninstall tb-nightly
+# python -m pip install tb-nightly -i https://mirrors.aliyun.com/pypi/simple
