@@ -4,9 +4,9 @@
 
 Vision-Language Navigation in Continuous Environments (VLN-CE) presents a core challenge: grounding high-level linguistic instructions into precise, safe, and long-horizon spatial actions. While recent Large Language Model (LLM) based approaches demonstrate impressive reasoning capabilities, explicit topological maps remain a vital solution for their robust spatial memory. However, existing topological planning methods suffer from a "Granularity Rigidity" problem: Fixed construction thresholds and sole geometric metrics lead to a misalignment between topological granularity and environmental complexity: the inability to dynamically modulate sampling density based on environmental uncertainty results in inefficiency within simple regions and sparse sampling in high-uncertainty areas, thereby compromising navigational precision. To address this, we propose DGNav, a framework that introduces Dynamic Topology Awareness for flexible navigation. Specifically, we first propose a Scene-Aware Adaptive Strategy, which dynamically modulates the graph construction threshold based on the dispersion of predicted waypoints, ensuring adaptive node density (i.e., "densification on demand"). Furthermore, we design a Dynamic Graph Transformer that reconstructs graph connectivity by fusing visual, linguistic, and geometric cues into dynamic edge weights, enabling the agent to filter out topological noise and enhance instruction adherence. Extensive experiments demonstrate that DGNav significantly outperforms the strong baseline (ETPNav) on R2R-CE, achieving a 58.56% Success Rate (SR) and 50.08% SPL in unseen environments. On the RxR-CE dataset, characterized by longer instructions and more complex path trajectories, DGNav excels in instruction fidelity, achieving 62.04% nDTW and 44.49% SDTW.
 
-<video src="./display/DGNav.mp4"></video>
+<video src="./assets/DGNav.mp4"></video>
 
-![fig1](./display/fig1.png)
+![fig1](./assets/fig1.png)
 
 ## Setup
 
@@ -127,4 +127,4 @@ Thanks for their great works!
 
 ## Performance Demonstration
 
-![Indicator_Comparison](./display/Indicator_Comparison.png)
+![Indicator_Comparison](./assets/Indicator_Comparison.png)
