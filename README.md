@@ -1,10 +1,16 @@
 # **Dynamic Topology Awareness: Breaking the Granularity Rigidity in Vision-Language Navigation**
 
+![DGNav](./assets/DGNav.gif)
+
 ## Abstract
 
-Vision-Language Navigation in Continuous Environments (VLN-CE) presents a core challenge: grounding high-level linguistic instructions into precise, safe, and long-horizon spatial actions. While recent Large Language Model (LLM) based approaches demonstrate impressive reasoning capabilities, explicit topological maps remain a vital solution for their robust spatial memory. However, existing topological planning methods suffer from a "Granularity Rigidity" problem: Fixed construction thresholds and sole geometric metrics lead to a misalignment between topological granularity and environmental complexity: the inability to dynamically modulate sampling density based on environmental uncertainty results in inefficiency within simple regions and sparse sampling in high-uncertainty areas, thereby compromising navigational precision. To address this, we propose DGNav, a framework that introduces Dynamic Topology Awareness for flexible navigation. Specifically, we first propose a Scene-Aware Adaptive Strategy, which dynamically modulates the graph construction threshold based on the dispersion of predicted waypoints, ensuring adaptive node density (i.e., "densification on demand"). Furthermore, we design a Dynamic Graph Transformer that reconstructs graph connectivity by fusing visual, linguistic, and geometric cues into dynamic edge weights, enabling the agent to filter out topological noise and enhance instruction adherence. Extensive experiments demonstrate that DGNav significantly outperforms the strong baseline (ETPNav) on R2R-CE, achieving a 58.56% Success Rate (SR) and 50.08% SPL in unseen environments. On the RxR-CE dataset, characterized by longer instructions and more complex path trajectories, DGNav excels in instruction fidelity, achieving 62.04% nDTW and 44.49% SDTW.
+Vision-Language Navigation in Continuous Environments (VLN-CE) presents a core challenge: grounding high-level linguistic instructions into precise, safe, and long-horizon spatial actions. Explicit topological maps have proven to be a vital solution for providing robust spatial memory in such tasks. However, existing topological planning methods suffer from a "Granularity Rigidity" problem. Specifically, these methods typically rely on fixed geometric thresholds to sample nodes, which fails to adapt to varying environmental complexities. This rigidity leads to a critical mismatch: the model tends to over-sample in simple, redundant areas (causing inefficiency) while under-sampling in high-uncertainty regions, thereby compromising navigation precision. To address this, we propose DGNav, a framework for Dynamic Topological Navigation, introducing a context-aware mechanism to modulate map density and connectivity on-the-fly. Our approach comprises two core innovations: 
 
-<video src="./assets/DGNav.mp4"></video>
+(1) A Scene-Aware Adaptive Strategy that dynamically modulates graph construction thresholds based on the dispersion of predicted waypoints, enabling "densification on demand" in challenging environments; 
+
+(2) A Dynamic Graph Transformer that reconstructs graph connectivity by fusing visual, linguistic, and geometric cues into dynamic edge weights, enabling the agent to filter out topological noise and enhancing instruction adherence. 
+
+Extensive experiments demonstrate that DGNav achieves a 58.56% Success Rate (SR) and 50.08% SPL in unseen environments on R2R-CE. On the RxR-CE dataset, characterized by longer instructions and more complex path trajectories, DGNav excels in instruction fidelity, achieving 62.04% nDTW and 44.49% SDTW. Ablation studies further confirm that DGNav achieves an optimal trade-off between navigation efficiency and safe exploration. 
 
 ![fig1](./assets/fig1.png)
 
@@ -127,4 +133,6 @@ Thanks for their great works!
 
 ## Performance Demonstration
 
-![Indicator_Comparison](./assets/Indicator_Comparison.png)
+![table1](./assets/table1.png)
+
+![table2](./assets/table2.png)
