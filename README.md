@@ -12,9 +12,7 @@ Vision-Language Navigation in Continuous Environments (VLN-CE) presents a core c
 
 Extensive experiments demonstrate that DGNav achieves a 58.56% Success Rate (SR) and 50.08% SPL in unseen environments on R2R-CE. On the RxR-CE dataset, characterized by longer instructions and more complex path trajectories, DGNav excels in instruction fidelity, achieving 62.04% nDTW and 44.49% SDTW. Ablation studies further confirm that DGNav achieves an optimal trade-off between navigation efficiency and safe exploration. 
 
-![fig1](./assets/fig1.png)
-
-## Setup
+![Fig.1](/home/pjk/git_pro/DGNav开源/assets/Fig.1.png)
 
 ### Installation
 
