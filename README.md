@@ -78,22 +78,6 @@ Extract such that it has the form `scene_datasets/mp3d/{scene}/{scene}.glb`. The
 
 * Processed data,fine-tuned weight is coming soon.
 
-  ```
-  unzip etp_ckpt.zip    # file/fold structure has been organized
-  ```
-
-  overall, files and folds are organized as follows:
-
-  ```
-  ETPNav
-  ├── data
-  │   ├── datasets
-  │   ├── logs
-  │   ├── scene_datasets
-  │   └── wp_pred
-  └── pretrained
-      └── ETP
-  ```
 
 ## Running
 
