@@ -2,6 +2,8 @@
 
 ![DGNav](./assets/DGNav.gif)
 
+[Paper]: https://arxiv.org/abs/2601.21751
+
 ## Abstract
 
 Vision-Language Navigation in Continuous Environments (VLN-CE) presents a core challenge: grounding high-level linguistic instructions into precise, safe, and long-horizon spatial actions. Explicit topological maps have proven to be a vital solution for providing robust spatial memory in such tasks. However, existing topological planning methods suffer from a "Granularity Rigidity" problem. Specifically, these methods typically rely on fixed geometric thresholds to sample nodes, which fails to adapt to varying environmental complexities. This rigidity leads to a critical mismatch: the model tends to over-sample in simple, redundant areas (causing inefficiency) while under-sampling in high-uncertainty regions, thereby compromising navigation precision. To address this, we propose DGNav, a framework for Dynamic Topological Navigation, introducing a context-aware mechanism to modulate map density and connectivity on-the-fly. Our approach comprises two core innovations: 
