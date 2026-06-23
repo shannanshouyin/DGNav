@@ -120,16 +120,3 @@ Thanks for their great works!
 ![table1](./assets/table1.png)
 
 ![table2](./assets/table2.png)
-
-# Citation
-
-If you find this repository is useful, please consider citing our paper:
-
-```
-@article{peng2026dynamic,
-  title={Dynamic Topology Awareness: Breaking the Granularity Rigidity in Vision-Language Navigation},
-  author={Peng, Jiankun and Guo, Jianyuan and Xu, Ying and Liu, Yue and Yan, Jiashuang and Ye, Xuanwei and Li, Houhua and Wang, Xiaoming},
-  journal={arXiv preprint arXiv:2601.21751},
-  year={2026}
-}
-```
