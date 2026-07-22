@@ -6,13 +6,7 @@
 
 ## Abstract
 
-Vision-Language Navigation in Continuous Environments (VLN-CE) presents a core challenge: grounding high-level linguistic instructions into precise, safe, and long-horizon spatial actions. Explicit topological maps have proven to be a vital solution for providing robust spatial memory in such tasks. However, existing topological planning methods suffer from a "Granularity Rigidity" problem. Specifically, these methods typically rely on fixed geometric thresholds to sample nodes, which fails to adapt to varying environmental complexities. This rigidity leads to a critical mismatch: the model tends to over-sample in simple, redundant areas (causing inefficiency) while under-sampling in high-uncertainty regions, thereby compromising navigation precision. To address this, we propose DGNav, a framework for Dynamic Topological Navigation, introducing a context-aware mechanism to modulate map density and connectivity on-the-fly. Our approach comprises two core innovations: 
-
-(1) A Scene-Aware Adaptive Strategy that dynamically modulates graph construction thresholds based on the dispersion of predicted waypoints, enabling "densification on demand" in challenging environments; 
-
-(2) A Dynamic Graph Transformer that reconstructs graph connectivity by fusing visual, linguistic, and geometric cues into dynamic edge weights, enabling the agent to filter out topological noise and enhancing instruction adherence. 
-
-Extensive experiments demonstrate that DGNav achieves a 58.56% Success Rate (SR) and 50.08% SPL in unseen environments on R2R-CE. On the RxR-CE dataset, characterized by longer instructions and more complex path trajectories, DGNav excels in instruction fidelity, achieving 62.04% nDTW and 44.49% SDTW. Ablation studies further confirm that DGNav achieves an optimal trade-off between navigation efficiency and safe exploration. 
+Vision-Language Navigation in Continuous Environments (VLN-CE) requires an agent to follow natural-language instructions while maintaining spatial memory for long-horizon decision making. Recent explicit-map methods address this problem by building online topological graphs, but they commonly rely on fixed geometric rules for node merging and graph reasoning. Such fixed topology construction may be suboptimal across different local structures, since simple regions and ambiguous branching regions often require different graph granularities. To address this issue, we propose DGNav, a dynamic topology-aware planning framework for VLN-CE. DGNav contains two complementary components. First, an adaptive graph update strategy adjusts the node-merging threshold according to the angular dispersion of predicted waypoints, allowing the online topology to maintain a compact representation in simple regions while preserving more local candidates in ambiguous regions. Second, an aware-GASA planner introduces geometric, visual, and instruction-aware residual biases into graph self-attention, encouraging the planner to reason over both physical reachability and task-relevant semantic cues. Experiments on R2R-CE and RxR-CE show that DGNav brings consistent improvements over the explicit topological baseline. Further ablations verify the individual contributions of adaptive graph updating and aware-GASA, showing that improving both graph construction and graph reasoning is beneficial for long-horizon VLN-CE.
 
 ![Fig.1](./assets/Fig.1.png)
 
@@ -95,14 +89,12 @@ CUDA_VISIBLE_DEVICES=0,1 bash pretrain_src/run_pt/run_r2r.bash 2333
 # for R2R-CE
 CUDA_VISIBLE_DEVICES=0,1 bash run_r2r/main.bash train 2333  # training
 CUDA_VISIBLE_DEVICES=0,1 bash run_r2r/main.bash eval  2333  # evaluation
-CUDA_VISIBLE_DEVICES=0,1 bash run_r2r/main.bash infer 2333  # inference
 ```
 
 ```
 # for RxR-CE
 CUDA_VISIBLE_DEVICES=0,1 bash run_rxr/main.bash train 2333  # training
 CUDA_VISIBLE_DEVICES=0,1 bash run_rxr/main.bash eval  2333  # evaluation
-CUDA_VISIBLE_DEVICES=0,1 bash run_rxr/main.bash infer 2333  # inference
 ```
 
 ## Acknowledge
