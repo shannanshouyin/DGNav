@@ -71,14 +71,10 @@ Extract such that it has the form `scene_datasets/mp3d/{scene}/{scene}.glb`. The
 
 ### Data and Trained Weights
 
-* Waypoint Predictor: `data/wp_pred/check_cwp_bestdist*`
+Waypoint Predictor: `data/wp_pred/check_cwp_bestdist*`
 
-  * For R2R-CE, `data/wp_pred/check_cwp_bestdist_hfov90` [[link]](https://drive.google.com/file/d/1goXbgLP2om9LsEQZ5XvB0UpGK4A5SGJC/view?usp=sharing).
-  * For RxR-CE, `data/wp_pred/check_cwp_bestdist_hfov63 `[[link]](https://drive.google.com/file/d/1LxhXkise-H96yMMrTPIT6b2AGjSjqqg0/view?usp=sharing) `(modify the suffix to hfov63)`.
-
-* Pre-trained weights follow ETPNav [[link]](https://drive.google.com/file/d/1MWR_Cf4m9HEl_3z8a5VfZeyUWIUTfIYr/view?usp=share_link).
-
-* Processed data,fine-tuned weight is coming soon.
+* For R2R-CE, `data/wp_pred/check_cwp_bestdist_hfov90` [[link]](https://drive.google.com/file/d/1goXbgLP2om9LsEQZ5XvB0UpGK4A5SGJC/view?usp=sharing).
+* For RxR-CE, `data/wp_pred/check_cwp_bestdist_hfov63 `[[link]](https://drive.google.com/file/d/1LxhXkise-H96yMMrTPIT6b2AGjSjqqg0/view?usp=sharing) `(modify the suffix to hfov63)`.
 
 
 ## Running
@@ -115,8 +111,3 @@ Our implementations are partially inspired by and [DUET](https://github.com/cshi
 
 Thanks for their great works!
 
-## Performance Demonstration
-
-![table1](./assets/table1.png)
-
-![table2](./assets/table2.png)

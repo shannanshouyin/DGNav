@@ -8,14 +8,6 @@ flag1="--exp_name release_rxr
       TORCH_GPU_IDS [0]
       GPU_NUMBERS 1
       NUM_ENVIRONMENTS 8
-      IL.iters 20000
-      IL.lr 1.5e-5
-      IL.log_every 200
-      IL.ml_weight 1.0
-      IL.sample_ratio 0.75
-      IL.decay_interval 4000
-      IL.load_from_ckpt False
-      IL.is_requeue True
       IL.waypoint_aug  True
       TASK_CONFIG.SIMULATOR.HABITAT_SIM_V0.ALLOW_SLIDING True
       MODEL.pretrained_path pretrained/ETP/mlm.sap_rxr/ckpts/model_step_90000.pt
@@ -27,7 +19,7 @@ flag2=" --exp_name release_rxr
       --exp-config run_rxr/iter_train.yaml
       SIMULATOR_GPU_IDS [0]
       TORCH_GPU_IDS [0]
-      GPU_NUMBERS 4
+      GPU_NUMBERS 1
       NUM_ENVIRONMENTS 8
       TASK_CONFIG.SIMULATOR.HABITAT_SIM_V0.ALLOW_SLIDING False
       EVAL.CKPT_PATH_DIR data/logs/checkpoints/release_rxr/ckpt.iter19600.pth

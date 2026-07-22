@@ -83,18 +83,10 @@ MODEL:
   # Dynamic graph configuration
   use_dynamic_graph: True  # Set to True to enable dynamic graph method, False to keep original ETPNav
   dynamic_graph_lr: 1e-4  # Learning rate for dynamic graph related parameters (recommend using smaller learning rate as training from scratch)
-  
-  # Geometric Dropout configuration - Strategy 1
-  use_geo_dropout: False  # Whether to enable geometric dropout (only effective when use_dynamic_graph=True)
-  geo_dropout_prob: 0.3  # Probability of geometric dropout (recommended range: 0.2-0.3, for ablation studies)
-  
+
   # Ablation study configuration: control whether to use Esem and Einst in dynamic graph
   use_esem: True  # Whether to enable semantic edge Esem (only effective when use_dynamic_graph=True)
   use_einst: True  # Whether to enable instruction edge Einst (only effective when use_dynamic_graph=True)
-  #——————————————————————————————————————————————————————
-  # Node Gating configuration
-  use_node_gating: False  # Whether to enable node gating mechanism (gate node features after Cross-Attn and before Self-Attn)
-  node_gating_lr: 1e-4  # Learning rate for node gating related parameters (recommend using smaller learning rate as training from scratch)
   #——————————————————————————————————————————————————————
   
   spatial_output: False

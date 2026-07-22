@@ -39,11 +39,6 @@ IL:
   sample_ratio: 0.75
   decay_interval: 3000
   
-  # Configuration for resuming training from checkpoint
-  load_from_ckpt: False  # Set to True to load from checkpoint
-  ckpt_to_load: 'data/logs/checkpoints/ckpt.iter12000.pth'  # Checkpoint path
-  is_requeue: False  # True: resume previous training state (including optimizer), False: only load model weights
-  
   max_traj_len: 15
   max_text_len: 80
 
@@ -91,13 +86,6 @@ MODEL:
   # Ablation study configuration: control whether to use Esem and Einst in dynamic graph
   use_esem: True  # Whether to enable semantic edge Esem (only effective when use_dynamic_graph=True)
   use_einst: True  # Whether to enable instruction edge Einst (only effective when use_dynamic_graph=True)
-  #——————————————————————————————————————————————————————
-  # Geometric Dropout configuration - Strategy 1
-  use_geo_dropout: False  # Whether to enable geometric dropout (only effective when use_dynamic_graph=True)
-  geo_dropout_prob: 0.3  # Probability of geometric dropout (recommended range: 0.2-0.3, for ablation studies)
-  # Node Gating configuration
-  use_node_gating: False  # Whether to enable node gating mechanism (gate node features after Cross-Attn and before Self-Attn)
-  node_gating_lr: 1e-4  # Learning rate for node gating related parameters (recommend using smaller learning rate as training from scratch)
   #——————————————————————————————————————————————————————
   
   spatial_output: False
