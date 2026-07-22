@@ -1,4 +1,4 @@
-# **Dynamic Topology Awareness: Breaking the Granularity Rigidity in Vision-Language Navigation**
+# DGNav: Dynamic Topology-Aware Planning for Vision-Language Navigation in Continuous Environments
 
 ![DGNav](./assets/DGNav.gif)
 
